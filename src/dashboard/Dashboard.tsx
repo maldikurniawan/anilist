@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGetData } from "../actions";
 import { API_URL_seasonNow } from "../constants";
+import { FaStar } from "react-icons/fa";
 
 const Dashboard = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -9,18 +10,21 @@ const Dashboard = () => {
 
     return (
         <div className="p-20 bg-black text-white">
-            <div className="text-center text-4xl font-bold">
+            <div className="text-center text-4xl font-bold mb-4">
                 Anime List
             </div>
             <div className="grid grid-cols-5 gap-4">
                 {seasonNow.data?.map((item: any, index: number) => (
-                    <div key={index} className="border p-2">
-                        <img src={item.images.jpg.image_url} alt={item.title} className="w-full h-auto" />
-                        <div className="text-left mt-2">Title: {item.title}</div>
+                    <div key={index} className="bg-gray-900 rounded-md p-2">
+                        <img src={item.images.jpg.image_url} alt={item.title} className="w-full h-auto rounded-md" />
+                        <div className="text-left mt-2 line-clamp-1">Title: {item.title}</div>
                         <div className="text-left">Episodes: {item.episodes}</div>
                         <div className="text-left">Status: {item.status}</div>
                         <div className="text-left">Duration: {item.duration}</div>
-                        <div className="text-left">Score: {item.score}</div>
+                        <div className="text-left flex items-center gap-1">
+                            <span>Score: </span>
+                            <FaStar className="text-yellow-500"/>{item.score}
+                        </div>
                     </div>
                 ))}
             </div>
