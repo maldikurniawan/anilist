@@ -1,9 +1,9 @@
-import Home from "./pages/Home";
+import Anime from "./pages/Anime";
 
 export default function App() {
   return (
     <div className="min-h-screen">
-      <Home />
+      <Anime />
     </div>
   )
 }

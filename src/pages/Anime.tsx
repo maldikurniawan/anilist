@@ -6,6 +6,7 @@ import {
     API_URL_seasonUpcoming
 } from "../constants";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
+import { TbLoader2 } from "react-icons/tb";
 
 const apiOptions: Record<string, string> = {
     now: API_URL_seasonNow,
@@ -13,7 +14,7 @@ const apiOptions: Record<string, string> = {
     all: API_URL_anime,
 };
 
-const Home = () => {
+const Anime = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedApi, setSelectedApi] = useState("now");
     const [searchQuery, setSearchQuery] = useState("");
@@ -50,13 +51,22 @@ const Home = () => {
                 </div>
             </div>
 
+            {getSeasonNow.isLoading && (
+                <div className="flex justify-center">
+                    <TbLoader2
+                        className="text-white animate-spin"
+                        size={50}
+                    />
+                </div>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {seasonNow.data?.map((item: any, index: any) => (
                     <div key={index} className="bg-gray-900 rounded-md p-4">
+                        <div className="text-left line-clamp-1 mb-2 font-bold">{item.title}</div>
                         <img src={item.images.jpg.image_url} alt={item.title} className="w-full h-auto rounded-md" />
-                        <div className="text-left mt-2 line-clamp-1">Title: {item.title}</div>
-                        <div className="text-left">Episodes: {item.episodes ?? "N/A"}</div>
-                        <div className="text-left">Status: {item.status}</div>
+                        <div className="text-left mt-2">Episodes: {item.episodes ?? "N/A"}</div>
+                        <div className="text-left line-clamp-1">Aired: {item.aired.string}</div>
                         <div className="text-left">Duration: {item.duration}</div>
                         <div className="text-left flex items-center gap-1">
                             <span>Score: </span>
@@ -87,4 +97,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Anime;
