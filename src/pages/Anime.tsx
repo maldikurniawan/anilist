@@ -5,8 +5,9 @@ import {
     API_URL_seasonNow,
     API_URL_seasonUpcoming
 } from "../constants";
-import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { TbLoader2 } from "react-icons/tb";
+import Pagination from "../components/Pagination";
 
 const apiOptions: Record<string, string> = {
     now: API_URL_seasonNow,
@@ -21,6 +22,7 @@ const Anime = () => {
 
     const getSeasonNow = useGetData(`${apiOptions[selectedApi]}?page=${currentPage}&q=${searchQuery}`, [selectedApi, currentPage, searchQuery], true);
     const seasonNow = getSeasonNow.data || {};
+    const totalPages = seasonNow.pagination?.last_visible_page || 1;
 
     return (
         <div className="min-h-screen p-4 sm:p-10 lg:p-20 bg-black text-white">
@@ -53,10 +55,7 @@ const Anime = () => {
 
             {getSeasonNow.isLoading && (
                 <div className="flex justify-center">
-                    <TbLoader2
-                        className="text-white animate-spin"
-                        size={50}
-                    />
+                    <TbLoader2 className="text-white animate-spin" size={50} />
                 </div>
             )}
 
@@ -65,7 +64,14 @@ const Anime = () => {
                     <div key={index} className="bg-gray-900 rounded-md p-4">
                         <div className="text-left line-clamp-1 mb-2 font-bold">{item.title}</div>
                         <img src={item.images.jpg.image_url} alt={item.title} className="w-full h-auto rounded-md" />
-                        <div className="text-left mt-2">Episodes: {item.episodes ?? "N/A"}</div>
+                        <div className="text-left mt-2 line-clamp-1">
+                            {
+                                Array.isArray(item.genres) && item.genres.length > 0
+                                    ? item.genres.map((genre: any) => genre.name).join(", ")
+                                    : "N/A"
+                            }
+                        </div>
+                        <div className="text-left">Episodes: {item.episodes ?? "N/A"}</div>
                         <div className="text-left line-clamp-1">Aired: {item.aired.string}</div>
                         <div className="text-left">Duration: {item.duration}</div>
                         <div className="text-left flex items-center gap-1">
@@ -76,23 +82,12 @@ const Anime = () => {
                 ))}
             </div>
 
-            <div className="flex justify-center mt-4 space-x-4">
-                <button
-                    className="px-4 py-2 bg-gray-900 rounded disabled:opacity-50"
-                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                    disabled={currentPage === 1}
-                >
-                    <FaChevronLeft />
-                </button>
-                <span className="px-4 py-2">Page {seasonNow.pagination?.current_page} of {seasonNow.pagination?.last_visible_page}</span>
-                <button
-                    className="px-4 py-2 bg-gray-900 rounded disabled:opacity-50"
-                    onClick={() => setCurrentPage((prev) => prev + 1)}
-                    disabled={!seasonNow.pagination?.has_next_page}
-                >
-                    <FaChevronRight />
-                </button>
-            </div>
+            {/* Reusable Pagination Component */}
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+            />
         </div>
     );
 }
