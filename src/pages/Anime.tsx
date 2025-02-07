@@ -25,7 +25,7 @@ const Anime = () => {
     const totalPages = seasonNow.pagination?.last_visible_page || 1;
 
     return (
-        <div className="min-h-screen p-4 sm:p-10 lg:p-20 bg-black text-white">
+        <div className="min-h-screen p-4 sm:p-10 lg:p-20 text-white">
             <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
                 <div className="text-center text-4xl font-bold whitespace-nowrap">Anime List</div>
                 {selectedApi === "all" && (
@@ -59,7 +59,7 @@ const Anime = () => {
                 </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {seasonNow.data?.map((item: any, index: any) => (
                     <div key={index} className="bg-gray-900 rounded-md p-4">
                         <div className="text-left line-clamp-1 mb-2 font-bold">{item.title}</div>
@@ -73,7 +73,7 @@ const Anime = () => {
                         </div>
                         <div className="text-left">Episodes: {item.episodes ?? "N/A"}</div>
                         <div className="text-left line-clamp-1">Aired: {item.aired.string}</div>
-                        <div className="text-left">Duration: {item.duration}</div>
+                        <div className="text-left line-clamp-1">Duration: {item.duration}</div>
                         <div className="text-left flex items-center gap-1">
                             <span>Score: </span>
                             <FaStar className="text-yellow-500" />{item.score ?? "N/A"}

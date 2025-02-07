@@ -39,7 +39,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
             {getPaginationNumbers().map((page, index) => (
                 <button
                     key={index}
-                    className={`px-3 py-2 rounded cursor-pointer ${page === currentPage ? "bg-blue-500" : "bg-gray-900"
+                    className={`px-3 py-2 rounded cursor-pointer ${page === currentPage ? "bg-purple-900" : "bg-gray-900"
                         } ${page === "..." ? "pointer-events-none opacity-50" : ""}`}
                     onClick={() => typeof page === "number" && onPageChange(page)}
                 >
