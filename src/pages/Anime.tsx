@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGetData } from "../actions";
 import {
     API_URL_anime,
     API_URL_seasonNow,
-    API_URL_seasonUpcoming
+    API_URL_seasonUpcoming,
+    API_URL_topAnime
 } from "../constants";
-import { FaStar } from "react-icons/fa";
+import { FaArrowUp, FaStar, FaTheaterMasks } from "react-icons/fa";
 import { TbLoader2 } from "react-icons/tb";
 import Pagination from "../components/Pagination";
+import Tooltip from "../components/Tooltip";
+import { Link } from "react-router-dom";
 
 const apiOptions: Record<string, string> = {
     now: API_URL_seasonNow,
     upcoming: API_URL_seasonUpcoming,
+    top: API_URL_topAnime,
     all: API_URL_anime,
 };
 
@@ -19,10 +23,28 @@ const Anime = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedApi, setSelectedApi] = useState("now");
     const [searchQuery, setSearchQuery] = useState("");
+    const [showScrollToTop, setShowScrollToTop] = useState(false);
 
     const getSeasonNow = useGetData(`${apiOptions[selectedApi]}?page=${currentPage}&q=${searchQuery}`, [selectedApi, currentPage, searchQuery], true);
     const seasonNow = getSeasonNow.data || {};
     const totalPages = seasonNow.pagination?.last_visible_page || 1;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 300) {
+                setShowScrollToTop(true);
+            } else {
+                setShowScrollToTop(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     return (
         <div className="min-h-screen p-4 sm:p-10 lg:p-20 text-white">
@@ -48,6 +70,7 @@ const Anime = () => {
                     >
                         <option value="now">Current Season</option>
                         <option value="upcoming">Upcoming Season</option>
+                        <option value="top">Top Anime</option>
                         <option value="all">All Anime</option>
                     </select>
                 </div>
@@ -88,6 +111,18 @@ const Anime = () => {
                 totalPages={totalPages}
                 onPageChange={setCurrentPage}
             />
+
+            <Link to={"/movie"} className="fixed bottom-4 left-4 bg-gray-900 p-2 rounded-full">
+                <Tooltip tooltip="Movie" spacing={10}>
+                    <FaTheaterMasks className="w-8 h-8 text-purple-500" />
+                </Tooltip>
+            </Link>
+
+            {showScrollToTop && (
+                <button onClick={scrollToTop} className="fixed bottom-4 right-4 cursor-pointer hover:bg-purple-500 bg-gray-900 p-2 rounded-full">
+                    <FaArrowUp className='w-8 h-8 text-purple-500 hover:text-gray-900' />
+                </button>
+            )}
         </div>
     );
 }
