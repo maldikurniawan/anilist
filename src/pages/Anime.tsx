@@ -9,6 +9,7 @@ import {
 import { FaArrowUp, FaGithub, FaInstagram, FaLinkedin, FaStar, FaTheaterMasks } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { TbLoader2 } from "react-icons/tb";
+import { motion } from "framer-motion";
 import Pagination from "../components/Pagination";
 import Tooltip from "../components/Tooltip";
 import { Link } from "react-router-dom";
@@ -85,9 +86,19 @@ const Anime = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {seasonNow.data?.map((item: any, index: any) => (
-                    <div key={index} className="bg-gray-900 rounded-md p-4">
+                    <motion.div
+                        key={index}
+                        className="bg-gray-900 rounded-md p-4"
+                        initial={{ rotateY: 0 }}
+                        whileHover={{ rotateY: 180 }}
+                        transition={{ duration: 0.6 }}
+                    >
                         <div className="text-left line-clamp-1 mb-2 font-bold">{item.title}</div>
-                        <img src={item.images.jpg.image_url} alt={item.title} className="w-full h-auto rounded-md" />
+                        <img
+                            src={item.images.webp.image_url}
+                            alt={item.title}
+                            className="w-full h-auto rounded-md"
+                        />
                         <div className="text-left mt-2 line-clamp-1">
                             {
                                 Array.isArray(item.genres) && item.genres.length > 0
@@ -102,7 +113,7 @@ const Anime = () => {
                             <span>Score: </span>
                             <FaStar className="text-yellow-500" />{item.score ?? "N/A"}
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
