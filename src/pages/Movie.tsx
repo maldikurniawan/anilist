@@ -70,7 +70,7 @@ const Movie = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {movies.map((item: any, index: any) => (
-                    <div key={index} className="bg-gray-900 rounded-md p-4">
+                    <div key={index} className="group relative bg-gray-900 rounded-md p-4 transition-all duration-300">
                         <div className="text-left line-clamp-1 mb-2 font-bold">{item.title}</div>
                         <img
                             src={item.poster_path
@@ -82,6 +82,11 @@ const Movie = () => {
                         <div className="text-center mt-2">{moment(item.release_date).format("D MMM YYYY")}</div>
                         <div className="text-center flex items-center gap-1 justify-center">
                             <FaStar className="text-yellow-500" />{item.vote_average ?? "N/A"}
+                        </div>
+
+                        <div className="absolute inset-0 bg-gray-900/90 bg-opacity-90 text-white p-4 rounded-md 
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">
+                            <p className="text-sm text-center line-clamp-16 sm:line-clamp-20">{item.overview || "No synopsis available."}</p>
                         </div>
                     </div>
                 ))}

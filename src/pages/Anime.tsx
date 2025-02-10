@@ -9,7 +9,6 @@ import {
 import { FaArrowUp, FaGithub, FaInstagram, FaLinkedin, FaStar, FaTheaterMasks } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { TbLoader2 } from "react-icons/tb";
-import { motion } from "framer-motion";
 import Pagination from "../components/Pagination";
 import Tooltip from "../components/Tooltip";
 import { Link } from "react-router-dom";
@@ -86,12 +85,9 @@ const Anime = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {seasonNow.data?.map((item: any, index: any) => (
-                    <motion.div
+                    <div
                         key={index}
-                        className="bg-gray-900 rounded-md p-4"
-                        initial={{ rotateY: 0 }}
-                        whileHover={{ rotateY: 180 }}
-                        transition={{ duration: 0.6 }}
+                        className="group relative bg-gray-900 rounded-md p-4 transition-all duration-300"
                     >
                         <div className="text-left line-clamp-1 mb-2 font-bold">{item.title}</div>
                         <img
@@ -113,7 +109,12 @@ const Anime = () => {
                             <span>Score: </span>
                             <FaStar className="text-yellow-500" />{item.score ?? "N/A"}
                         </div>
-                    </motion.div>
+
+                        <div className="absolute inset-0 bg-gray-900/90 bg-opacity-90 text-white p-4 rounded-md 
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">
+                            <p className="text-sm text-center line-clamp-16 sm:line-clamp-20">{item.synopsis || "No synopsis available."}</p>
+                        </div>
+                    </div>
                 ))}
             </div>
 
