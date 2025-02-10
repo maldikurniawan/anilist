@@ -115,16 +115,24 @@ const Anime = () => {
 
             <div className="flex justify-center mt-10 gap-1 sm:gap-2">
                 <a href="https://github.com/maldikurniawan" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
-                    <FaGithub className="w-6 sm:w-8 h-6 sm:h-8"/>
+                    <Tooltip tooltip="Github" spacing={10}>
+                        <FaGithub className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
                 </a>
                 <a href="https://www.linkedin.com/in/m-aldi-kurniawan-23a781291/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
-                    <FaLinkedin className="w-6 sm:w-8 h-6 sm:h-8"/>
+                    <Tooltip tooltip="LinkedIn" spacing={10}>
+                        <FaLinkedin className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
                 </a>
                 <a href="https://www.instagram.com/aldiknn_/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
-                    <FaInstagram className="w-6 sm:w-8 h-6 sm:h-8"/>
+                    <Tooltip tooltip="Instagram" spacing={10}>
+                        <FaInstagram className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
                 </a>
                 <a href="https://maldikurniawan.netlify.app/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
-                    <CgProfile className="w-6 sm:w-8 h-6 sm:h-8"/>
+                    <Tooltip tooltip="Portofolio" spacing={10}>
+                        <CgProfile className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
                 </a>
             </div>
 
