@@ -28,7 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
         <div className="flex justify-center mt-4 space-x-2">
             {/* Previous Button */}
             <button
-                className="px-3 py-2 bg-gray-900 rounded cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                className="px-2 sm:px-3 py-1 sm:py-2 bg-gray-900 rounded cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
             >
@@ -39,7 +39,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
             {getPaginationNumbers().map((page, index) => (
                 <button
                     key={index}
-                    className={`px-3 py-2 rounded cursor-pointer ${page === currentPage ? "bg-purple-900" : "bg-gray-900"
+                    className={`px-2 sm:px-3 py-1 sm:py-2 rounded cursor-pointer ${page === currentPage ? "bg-purple-900" : "bg-gray-900"
                         } ${page === "..." ? "pointer-events-none opacity-50" : ""}`}
                     onClick={() => typeof page === "number" && onPageChange(page)}
                 >
@@ -49,7 +49,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
 
             {/* Next Button */}
             <button
-                className="px-3 py-2 bg-gray-900 rounded cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                className="px-2 sm:px-3 py-1 sm:py-2 bg-gray-900 rounded cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
             >

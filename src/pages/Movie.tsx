@@ -4,10 +4,11 @@ import { TbLoader2 } from "react-icons/tb";
 import moment from "moment";
 import { API_URL_movie, API_URL_movieSearch } from "../constants";
 import Pagination from "../components/Pagination";
-import { FaArrowUp, FaStar } from "react-icons/fa";
+import { FaArrowUp, FaGithub, FaInstagram, FaLinkedin, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { GiSamuraiHelmet } from "react-icons/gi";
 import Tooltip from "../components/Tooltip";
+import { CgProfile } from "react-icons/cg";
 
 const API_KEY = "ec4ebf43da0d341b08af3daf97e1a574";
 
@@ -47,7 +48,7 @@ const Movie = () => {
     };
 
     return (
-        <div className="min-h-screen p-4 sm:p-10 lg:p-20 text-white">
+        <div className="min-h-screen p-4 sm:pt-10 sm:px-10 lg:pt-20 lg:px-20 text-white">
             <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
                 <div className="text-center text-4xl font-bold whitespace-nowrap">
                     {searchQuery ? "Search Results" : "Popular Movies"}
@@ -92,15 +93,38 @@ const Movie = () => {
                 onPageChange={setCurrentPage}
             />
 
-            <Link to={"/"} className="fixed bottom-4 left-4 bg-gray-900 p-2 rounded-full">
+            <div className="flex justify-center mt-10 gap-1 sm:gap-2">
+                <a href="https://github.com/maldikurniawan" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <Tooltip tooltip="Github" spacing={10}>
+                        <FaGithub className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
+                </a>
+                <a href="https://www.linkedin.com/in/m-aldi-kurniawan-23a781291/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <Tooltip tooltip="LinkedIn" spacing={10}>
+                        <FaLinkedin className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
+                </a>
+                <a href="https://www.instagram.com/aldiknn_/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <Tooltip tooltip="Instagram" spacing={10}>
+                        <FaInstagram className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
+                </a>
+                <a href="https://maldikurniawan.netlify.app/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <Tooltip tooltip="Portofolio" spacing={10}>
+                        <CgProfile className="w-6 sm:w-8 h-6 sm:h-8" />
+                    </Tooltip>
+                </a>
+            </div>
+
+            <Link to={"/"} className="fixed bottom-4 border border-purple-500 left-4 bg-gray-900 p-2 rounded-full">
                 <Tooltip tooltip="Anime" spacing={10}>
                     <GiSamuraiHelmet className="w-8 h-8 text-purple-500" />
                 </Tooltip>
             </Link>
 
             {showScrollToTop && (
-                <button onClick={scrollToTop} className="fixed bottom-4 right-4 cursor-pointer hover:bg-purple-500 bg-gray-900 p-2 rounded-full">
-                    <FaArrowUp className='w-8 h-8 text-purple-500 hover:text-gray-900' />
+                <button onClick={scrollToTop} className="fixed bottom-4 border border-purple-500 right-4 cursor-pointer bg-gray-900 p-2 rounded-full">
+                    <FaArrowUp className='w-8 h-8 text-purple-500' />
                 </button>
             )}
         </div>

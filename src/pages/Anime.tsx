@@ -6,7 +6,8 @@ import {
     API_URL_seasonUpcoming,
     API_URL_topAnime
 } from "../constants";
-import { FaArrowUp, FaStar, FaTheaterMasks } from "react-icons/fa";
+import { FaArrowUp, FaGithub, FaInstagram, FaLinkedin, FaStar, FaTheaterMasks } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 import { TbLoader2 } from "react-icons/tb";
 import Pagination from "../components/Pagination";
 import Tooltip from "../components/Tooltip";
@@ -47,7 +48,7 @@ const Anime = () => {
     };
 
     return (
-        <div className="min-h-screen p-4 sm:p-10 lg:p-20 text-white">
+        <div className="min-h-screen p-4 sm:pt-10 sm:px-10 lg:pt-20 lg:px-20 text-white">
             <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
                 <div className="text-center text-4xl font-bold whitespace-nowrap">Anime List</div>
                 {selectedApi === "all" && (
@@ -112,15 +113,30 @@ const Anime = () => {
                 onPageChange={setCurrentPage}
             />
 
-            <Link to={"/movie"} className="fixed bottom-4 left-4 bg-gray-900 p-2 rounded-full">
+            <div className="flex justify-center mt-10 gap-1 sm:gap-2">
+                <a href="https://github.com/maldikurniawan" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <FaGithub className="w-6 sm:w-8 h-6 sm:h-8"/>
+                </a>
+                <a href="https://www.linkedin.com/in/m-aldi-kurniawan-23a781291/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <FaLinkedin className="w-6 sm:w-8 h-6 sm:h-8"/>
+                </a>
+                <a href="https://www.instagram.com/aldiknn_/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <FaInstagram className="w-6 sm:w-8 h-6 sm:h-8"/>
+                </a>
+                <a href="https://maldikurniawan.netlify.app/" target="_blank" className="border border-purple-500 text-purple-500 bg-gray-900 rounded-full p-2">
+                    <CgProfile className="w-6 sm:w-8 h-6 sm:h-8"/>
+                </a>
+            </div>
+
+            <Link to={"/movie"} className="fixed bottom-4 border border-purple-500 left-4 bg-gray-900 p-2 rounded-full">
                 <Tooltip tooltip="Movie" spacing={10}>
                     <FaTheaterMasks className="w-8 h-8 text-purple-500" />
                 </Tooltip>
             </Link>
 
             {showScrollToTop && (
-                <button onClick={scrollToTop} className="fixed bottom-4 right-4 cursor-pointer hover:bg-purple-500 bg-gray-900 p-2 rounded-full">
-                    <FaArrowUp className='w-8 h-8 text-purple-500 hover:text-gray-900' />
+                <button onClick={scrollToTop} className="fixed bottom-4 border border-purple-500 right-4 cursor-pointer bg-gray-900 p-2 rounded-full">
+                    <FaArrowUp className='w-8 h-8 text-purple-500' />
                 </button>
             )}
         </div>
