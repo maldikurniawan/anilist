@@ -86,7 +86,7 @@ const Movie = () => {
 
                         <div className="absolute inset-0 bg-gray-900/90 bg-opacity-90 text-white p-4 rounded-md 
                         opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">
-                            <p className="text-sm text-center line-clamp-14 sm:line-clamp-18">{item.overview || "No synopsis available."}</p>
+                            <p className="text-sm text-center line-clamp-12 sm:line-clamp-16">{item.overview || "No synopsis available."}</p>
                         </div>
                     </div>
                 ))}
