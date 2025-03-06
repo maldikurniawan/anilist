@@ -63,7 +63,7 @@ const Manga = () => {
                     )}
                     <div className="flex justify-center gap-2">
                         <select
-                            className="px-2 py-2 bg-gray-900 text-white rounded"
+                            className="px-2 py-2 bg-gray-900 text-white max-[640px]:w-full rounded"
                             value={selectedApi}
                             onChange={(e) => {
                                 setSelectedApi(e.target.value);
@@ -74,7 +74,7 @@ const Manga = () => {
                             <option value="topManga">Top</option>
                         </select>
                         <select
-                            className="px-2 py-2 bg-gray-900 text-white rounded"
+                            className="px-2 py-2 bg-gray-900 text-white max-[640px]:w-full rounded"
                             value={type}
                             onChange={(e) => {
                                 setType(e.target.value);

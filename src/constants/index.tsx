@@ -8,8 +8,8 @@ export const API_URL_seasonNow = `${mal}/seasons/now`;
 export const API_URL_seasonUpcoming = `${mal}/seasons/upcoming`;
 
 // Seiyuu
-export const API_URL_seiyuu = `${mal}/people`;
-export const API_URL_topSeiyuu = `${mal}/top/people`;
+export const API_URL_character = `${mal}/characters`;
+export const API_URL_topCharacter = `${mal}/top/characters`;
 
 // Manga
 export const API_URL_manga = `${mal}/manga`;
