@@ -1,11 +1,11 @@
 import Anime from "./Anime"
 import Manga from "./Manga"
 import Movie from "./Movie"
-import Seiyuu from "./Seiyuu"
+import Character from "./Character"
 
 export {
     Anime,
     Manga,
     Movie,
-    Seiyuu,
+    Character,
 };

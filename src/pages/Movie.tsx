@@ -4,7 +4,7 @@ import { TbLoader2 } from "react-icons/tb";
 import moment from "moment";
 import { API_URL_movie, API_URL_movieSearch } from "@/constants";
 import { Footer, Header, Pagination } from "@/components";
-import { FaStar } from "react-icons/fa";
+import { FaSearch, FaStar, FaTimes } from "react-icons/fa";
 
 const API_KEY = "ec4ebf43da0d341b08af3daf97e1a574";
 
@@ -25,6 +25,10 @@ const Movie = () => {
     const movies = data?.results || [];
     const totalPages = data?.total_pages || 1;
 
+    const clearSearch = () => {
+        setSearchQuery("");
+    };
+
     return (
         <>
             <Header />
@@ -33,13 +37,28 @@ const Movie = () => {
                     <div className="text-center text-xl sm:text-3xl font-bold whitespace-nowrap">
                         {searchQuery ? "Search Results" : "Popular Movies"}
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Search movies..."
-                        className="px-4 py-2 h-10 bg-gray-900 text-white rounded w-full"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
+                    <form className="w-full">
+                        <div className="relative">
+                            <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <FaSearch />
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                className="bg-gray-900 text-white text-sm rounded focus:ring-[#9B30FF] focus:border-[#9B30FF] block w-full ps-10 p-2.5"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            {searchQuery && (
+                                <div
+                                    className="absolute inset-y-0 end-0 flex items-center pr-2 cursor-pointer"
+                                    onClick={clearSearch}
+                                >
+                                    <FaTimes />
+                                </div>
+                            )}
+                        </div>
+                    </form>
                 </div>
 
                 {isLoading && (

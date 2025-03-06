@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NotFound } from "@/components";
-import { Anime, Manga, Movie, Seiyuu } from "@/pages";
+import { Anime, Manga, Movie, Character } from "@/pages";
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
           <Route path="/" element={<Anime />} />
           <Route path="/manga" element={<Manga />} />
           <Route path="/movie" element={<Movie />} />
-          <Route path="/seiyuu" element={<Seiyuu />} />
+          <Route path="/character" element={<Character />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
-import { GiEvilBook, GiFaceToFace, GiFilmSpool, GiSamuraiHelmet } from "react-icons/gi";
+import { GiCharacter, GiEvilBook, GiFilmSpool, GiSamuraiHelmet } from "react-icons/gi";
 
 const Header = () => {
     const ref = useRef<HTMLDivElement>(null);
@@ -16,7 +16,7 @@ const Header = () => {
         { icon: <GiSamuraiHelmet />, title: "Anime", link: "/" },
         { icon: <GiEvilBook />, title: "Manga", link: "/manga" },
         { icon: <GiFilmSpool />, title: "Movie", link: "/movie" },
-        { icon: <GiFaceToFace />, title: "Seiyuu", link: "/seiyuu" },
+        { icon: <GiCharacter />, title: "Character", link: "/character" },
     ];
 
     useOnClickOutside(ref, () => setNavOpen(false));
@@ -58,7 +58,7 @@ const Header = () => {
                             <NavLink
                                 to={item.link}
                                 className={({ isActive }) =>
-                                    `flex items-center gap-1 px-2 py-[18px] border-b border-transparent font-medium whitespace-nowrap cursor-pointer ${isActive ? "text-purple-500" : "hover:border-white hover:text-purple-500 text-white"}`
+                                    `flex items-center gap-1 px-2 py-[18px] border-b-2 border-transparent font-medium whitespace-nowrap cursor-pointer ${isActive ? "text-purple-500 border-white" : "hover:border-white hover:text-purple-500 text-white"}`
                                 }
                             >
                                 {item.icon}
