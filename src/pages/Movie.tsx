@@ -28,9 +28,9 @@ const Movie = () => {
     return (
         <>
             <Header />
-            <div className="min-h-screen p-4 pt-28 sm:px-10 lg:px-20 text-white">
+            <div className="min-h-screen p-4 pt-24 sm:px-10 lg:px-20 text-white">
                 <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
-                    <div className="text-center text-4xl font-bold whitespace-nowrap">
+                    <div className="text-center text-xl sm:text-3xl font-bold whitespace-nowrap">
                         {searchQuery ? "Search Results" : "Popular Movies"}
                     </div>
                     <input

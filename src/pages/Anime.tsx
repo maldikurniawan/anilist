@@ -29,9 +29,9 @@ const Anime = () => {
     return (
         <>
             <Header />
-            <div className="min-h-screen p-4 pt-28 sm:px-10 lg:px-20 text-white">
+            <div className="min-h-screen p-4 pt-24 sm:px-10 lg:px-20 text-white">
                 <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
-                    <div className="text-center text-4xl font-bold whitespace-nowrap">Anime List</div>
+                    <div className="text-center text-xl sm:text-3xl font-bold whitespace-nowrap">Anime List</div>
                     {selectedApi === "all" && (
                         <input
                             type="text"
@@ -84,7 +84,7 @@ const Anime = () => {
                                 }
                             </div>
                             <div className="text-left">Episodes: {item.episodes ?? "N/A"}</div>
-                            <div className="text-left line-clamp-1">Aired: {item.aired.string}</div>
+                            <div className="text-left line-clamp-1">Aired: {item.aired.string ?? "N/A"}</div>
                             <div className="text-left line-clamp-1">Duration: {item.duration}</div>
                             <div className="text-left flex items-center gap-1">
                                 <span>Score: </span>

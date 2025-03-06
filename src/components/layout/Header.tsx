@@ -3,7 +3,7 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { useEffect, useRef, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GiEvilBook, GiFaceToFace, GiFilmSpool, GiSamuraiHelmet } from "react-icons/gi";
 
 const Header = () => {
@@ -38,7 +38,7 @@ const Header = () => {
     return (
         <div className="px-4 sm:px-10 lg:px-20 fixed w-full z-50 mt-4">
             <div
-                className={`px-4 md:px-[40px] h-20 rounded-xl flex items-center justify-between shadow transition-all duration-300 ${scrolled
+                className={`px-4 md:px-[40px] h-16 rounded-xl flex items-center justify-between shadow transition-all duration-300 ${scrolled
                     ? "bg-gray-900/75 backdrop-blur-xl hover:bg-gray-900 hover:shadow-purple-500"
                     : "bg-gray-900"
                     }`}
@@ -55,13 +55,15 @@ const Header = () => {
                 <div className="hidden lg:flex items-center gap-x-2">
                     {menu.map((item, itemIdx) => (
                         <div key={itemIdx}>
-                            <Link
+                            <NavLink
                                 to={item.link}
-                                className="text-white flex items-center gap-1 rounded-md px-2 py-[8px] hover:bg-white hover:text-purple-500 font-medium whitespace-nowrap cursor-pointer"
+                                className={({ isActive }) =>
+                                    `flex items-center gap-1 px-2 py-[18px] border-b border-transparent font-medium whitespace-nowrap cursor-pointer ${isActive ? "text-purple-500" : "hover:border-white hover:text-purple-500 text-white"}`
+                                }
                             >
                                 {item.icon}
                                 <p>{item.title}</p>
-                            </Link>
+                            </NavLink>
                         </div>
                     ))}
                 </div>
