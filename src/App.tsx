@@ -1,8 +1,7 @@
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NotFound from "./components/NotFound";
-import Anime from "./pages/Anime";
-import Movie from "./pages/Movie";
+import { NotFound } from "@/components";
+import { Anime, Movie } from "@/pages";
 
 export default function App() {
   return (
