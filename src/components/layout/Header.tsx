@@ -10,7 +10,8 @@ const Header = () => {
     const ref = useRef<HTMLDivElement>(null);
     const { width } = useWindowSize();
     const [navOpen, setNavOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
+    const [lastScrollY, setLastScrollY] = useState(0);
 
     const menu = [
         { icon: <GiSamuraiHelmet />, title: "Anime", link: "/" },
@@ -29,19 +30,24 @@ const Header = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY >= 100);
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY) {
+                setScrollDirection("down");
+            } else if (currentScrollY < lastScrollY) {
+                setScrollDirection("up");
+            }
+            setLastScrollY(currentScrollY);
         };
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [lastScrollY]);
 
     return (
         <div className="px-4 sm:px-10 lg:px-20 fixed w-full z-50 mt-4">
             <div
-                className={`px-4 md:px-[40px] h-16 rounded-xl flex items-center justify-between shadow transition-all duration-300 ${scrolled
-                    ? "bg-gray-900/75 backdrop-blur-xl hover:bg-gray-900 hover:shadow-purple-500"
-                    : "bg-gray-900"
-                    }`}
+                className="px-4 md:px-[40px] h-16 bg-gray-900/75 backdrop-blur-xl hover:bg-gray-900 hover:shadow-purple-500 rounded-xl flex items-center justify-between shadow transition-all duration-300 delay-100"
+                style={{ marginTop: scrollDirection == "up"? "0px":"-80px" }}
             >
                 <div className="font-bold text-xl flex md:text-3xl items-center gap-4 justify-center text-white">
                     <Link
