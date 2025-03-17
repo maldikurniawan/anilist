@@ -1,50 +1,48 @@
-# React + TypeScript + Vite
+# Anilist
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Tampilan Game](https://raw.githubusercontent.com/maldikurniawan/portfolio/refs/heads/main/public/assets/animlist.png)
 
-Currently, two official plugins are available:
+## Deskripsi
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Anilist adalah adalah sebuah platform yang memungkinkan pengguna untuk melihat daftar anime, movie, dan manga. Website ini menyajikan informasi lengkap tentang anime, termasuk sinopsis, genre, rating, dan tahun rilis.
 
-## Expanding the ESLint configuration
+## Fitur
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Anime List**: Menampilkan daftar anime dengan informasi detail.
+- **Movie List**: Menampilkan daftar movie yang tersedia.
+- **Manga List**: Menampilkan daftar manga populer.
+- **Detail Anime**: Informasi lengkap tentang setiap anime, termasuk episode, sinopsis, dan rating.
+- **Pencarian**: Fitur pencarian untuk menemukan anime, movie, atau manga dengan mudah.
+- **Filter dan Sorting**: Memungkinkan pengguna menyaring berdasarkan tahun rilis atau rating.
 
-- Configure the top-level `parserOptions` property like this:
+## Teknologi yang Digunakan
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **ReactJS** + **TypeScript** untuk pengembangan front-end.
+- **Tailwind CSS** untuk styling yang cepat dan fleksibel.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Instalasi dan Penggunaan
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone repositori ini:
+   ```sh
+   git clone https://github.com/maldikurniawan/anilist.git
+   ```
+2. Masuk ke folder proyek:
+   ```sh
+   cd anilist
+   ```
+3. Instal dependensi:
+   ```sh
+   npm install
+   ```
+4. Jalankan aplikasi:
+   ```sh
+   npm run dev
+   ```
+5. Buka di browser:
+   ```sh
+   http://localhost:5173
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Demo
+
+Anda dapat melihat demo di sini: [Anilist](https://animlist.vercel.app/)
