@@ -10,7 +10,7 @@ const Header = () => {
     const ref = useRef<HTMLDivElement>(null);
     const { width } = useWindowSize();
     const [navOpen, setNavOpen] = useState(false);
-    const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
+    const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>("up");
     const [lastScrollY, setLastScrollY] = useState(0);
 
     const menu = [
